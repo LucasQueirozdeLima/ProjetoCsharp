@@ -1,0 +1,45 @@
+create database tourtest;
+use tourtest;
+ 
+create table Login (
+id_login int primary key auto_increment not null,
+usuario varchar(20) not null unique,
+email varchar(50) not null unique,
+senha varchar(25) not null,
+id_tournament int not null
+);
+ 
+create table Players (
+id_player int primary key auto_increment not null,
+player_name varchar(13) not null,
+player_email varchar(20),
+player_score varchar(3)
+);
+create table Tournament (
+id_tournament int primary key auto_increment not null,
+tournament_name varchar(20) not null,
+tournament_date date not null,
+tournament_location varchar(30),
+tournament_description varchar(100)
+);
+create table Matches (
+id_match int primary key auto_increment not null,
+id_tournament int not null,
+id_player1 int not null,
+id_player2 int not null,
+match_date date,
+match_result varchar(30)
+);
+ 
+alter table Matches
+add constraint fk_id_tourMatch foreign key (id_tournament) references Tournament (id_tournament);
+ 
+alter table Matches
+add constraint fk_id_player1 foreign key (id_player1) references Players (id_player);
+ 
+alter table Matches
+add constraint fk_id_player2 foreign key (id_player2) references Players (id_player);
+ 
+alter table Login 
+add constraint fk_id_tourLogin foreign key (id_tournament) references Tournament (id_tournament);
+ 
