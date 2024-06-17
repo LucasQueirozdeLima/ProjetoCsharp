@@ -1,6 +1,8 @@
 create database tourtest;
 use tourtest;
- 
+
+use grupo05php;
+
 create table Login (
 id_login int primary key auto_increment not null,
 usuario varchar(20) not null unique,
@@ -42,4 +44,30 @@ add constraint fk_id_player2 foreign key (id_player2) references Players (id_pla
  
 alter table Login 
 add constraint fk_id_tourLogin foreign key (id_tournament) references Tournament (id_tournament);
+
+
+----------------------------------------------------------------------------
+
+
+use grupo05php;
+
+CREATE TABLE Login (
+    id_login INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    usuario VARCHAR(20) NOT NULL UNIQUE,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    senha VARCHAR(25) NOT NULL,
+    id_tournament INT NOT NULL,
+    CONSTRAINT fk_id_tourLogin FOREIGN KEY (id_tournament) REFERENCES Tournament (id_tournament)
+);
+
+CREATE TABLE Tournament (
+    id_tournament INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    tournament_name VARCHAR(20) NOT NULL,
+    tournament_description VARCHAR(100)
+);
+
+create table Players (
+id_player int primary key auto_increment not null,
+player_name varchar(13) not null
+);
  

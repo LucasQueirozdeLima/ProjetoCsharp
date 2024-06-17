@@ -47,9 +47,12 @@ namespace tournament
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form1 login = new Form1();
-            login.Show();
             this.Close();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
